@@ -28,7 +28,8 @@ module.exports = {
     ],
     loaders: [
       { test: /\.js|\.tag$/, exclude: /node_modules/, include: /src/, loader: 'babel-loader', query: {modules: 'common'} },
-      { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' }
+      { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
+      { test: /.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
     ]
   },
   postcss: [cssimport, cssnested, customProperties, autoprefixer, csswring],
