@@ -24,7 +24,13 @@ module.exports = {
   ],
   module: {
     preLoaders: [
-      { test: /\.tag$/, exclude: /node_modules/, loader: 'riotjs-loader', query: { type: 'es6' } }
+        { test: /\.tag$/, exclude: /node_modules/,
+          loader: 'riot-tag-loader',
+          query: {
+              hot: true,
+              debug: true
+              // type: 'es6'
+          } }
     ],
     loaders: [
       { test: /\.js|\.tag$/, exclude: /node_modules/, include: /src/, loader: 'babel-loader', query: {modules: 'common'} },
