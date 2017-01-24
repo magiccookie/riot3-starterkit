@@ -6,7 +6,7 @@
 
   <script>
 
-    this.currentView = riot.routeState.view;
+    this.currentView = riot.routeState.view
 
     this.navItems = [
       { title : 'Home', view : 'home'},
