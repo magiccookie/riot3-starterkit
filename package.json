@@ -1,7 +1,7 @@
 {
-  "name": "riot-startkit",
-  "version": "1.1.0",
-  "description": "A Riot - PostCSS - Webpack startkit from wbkd.io",
+  "name": "riot3-starterkit",
+  "version": "0.1.0",
+  "description": "Riot web application boilerplate",
   "main": "webpack.config.js",
   "scripts": {
     "html": "cpy ./src/index.html ./build/",
@@ -10,7 +10,7 @@
     "serve": "webpack-dev-server --hot",
     "dev": "npm-run-all html serve"
   },
-  "author": "webkid.io",
+  "author": "magiccookie",
   "license": "MIT",
   "dependencies": {
     "normalize.css": "^3.0.3",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wbkd/riotjs-startkit.git"
+    "url": "https://github.com/magiccookie/riot3-starterkit"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",
