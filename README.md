@@ -1,4 +1,4 @@
-# Riot Starterkit
+# Riot 3 Starterkit
 
 With this starterkit we want to provide **a simple foundation for Riot applications**. We are using the riot router and a flux inspired event controller called RiotControl.<br />
 If you have any ideas on how to improve/simplify the structure you are welcome to help us.
