@@ -16,8 +16,8 @@ class Router{
     this._views = ['home', 'projects'];
     this._defaultView = 'home';
 
-    riot.route(this._handleRoute.bind(this));
-    riot.route.exec(this._handleRoute.bind(this));
+    riot.route(this._handleRoute.bind(this))
+    riot.route.start(true)
   }
 
   _handleRoute(view) {
