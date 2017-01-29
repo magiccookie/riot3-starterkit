@@ -16,33 +16,31 @@ module.exports = {
     filename: 'bundle.js'
   },
   devtool: 'eval',
-  debug: true,
   plugins: [
-    new webpack.ProvidePlugin({
-      riot: 'riot'
-    })
-  ],
+    new webpack.ProvidePlugin( { riot: 'riot' } ),
+    new webpack.LoaderOptionsPlugin({
+        options: {
+            postcss: [cssimport, cssnested, customProperties,
+                      autoprefixer, csswring]}})],
   module: {
-    preLoaders: [
+    rules: [
         { test: /\.tag$/, exclude: /node_modules/,
+          enforce: "pre",
           loader: 'riot-tag-loader',
-          query: {
-              hot: true,
-              debug: true
-              // type: 'es6'
-          } }
-    ],
-    loaders: [
-      { test: /\.js|\.tag$/, exclude: /node_modules/, include: /src/, loader: 'babel-loader', query: {modules: 'common'} },
-      { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
-      { test: /.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
-    ]
+          options: { hot: true, debug: true} },
+        { test: /\.js|\.tag$/,
+          exclude: /node_modules/,
+          include: /src/,
+          loader: 'babel-loader'},
+        { test: /\.css$/,
+          use: ["style-loader", "css-loader", "postcss-loader"] },
+        { test: /.(png|woff|woff2|eot|ttf|svg)$/,
+          use: 'url-loader?limit=100000' }]
   },
-  postcss: [cssimport, cssnested, customProperties, autoprefixer, csswring],
   devServer: {
     contentBase: './build/',
     port: 1337,
     hot: true,
     inline: true
   }
-};
+}
