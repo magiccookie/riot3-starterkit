@@ -28,12 +28,17 @@ module.exports = {
           enforce: "pre",
           loader: 'riot-tag-loader',
           options: { hot: true, debug: true} },
+
         { test: /\.js|\.tag$/,
           exclude: /node_modules/,
           include: /src/,
-          loader: 'babel-loader'},
+          loader: 'babel-loader',
+          options: {presets: ["es2015"],
+                    plugins: ["transform-object-rest-spread"]}},
+
         { test: /\.css$/,
           use: ["style-loader", "css-loader", "postcss-loader"] },
+
         { test: /.(png|woff|woff2|eot|ttf|svg)$/,
           use: 'url-loader?limit=100000' }]
   },

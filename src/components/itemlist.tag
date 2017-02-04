@@ -1,20 +1,34 @@
 <itemlist>
-  <h3>{ opts.title }</h3>
+    <h3>{this.state.title}</h3>
 
-  <ul>
-    <li each={ items } >{ this.name }</li>
-  </ul>
+    <ul>
+    <li each={this.state.items} onclick={changeTitle}>{this.name}</li>
+    </ul>
 
-  <script>
-    this.items = [];
+    <form submit={addItem}>
+        <input type="text" ref="newItem"></input>
+        <button>Add</button>
+    </form>
 
-    this.on('mount', () => {
-      riot.control.trigger(riot.EVT.loadItems);
-    });
+    <script>
 
-    riot.control.on(riot.EVT.loadItemsSuccess, items => {
-      this.items = items;
-      this.update()
-    });
-  </script>
+     this.state = riot.store.getState()
+
+     riot.store.subscribe( () => {
+         this.state = riot.store.getState()
+     })
+
+     this.changeTitle = (e) => {
+         riot.store.dispatch({type: 'changeTitle',
+                              data: e.item.name})
+     }
+
+    this.addItem = (e) => {
+        e.preventDefault()
+        riot.store.dispatch({type: 'addItem',
+                             data: this.refs.newItem.value})
+        this.refs.newItem.value = ''
+    }
+
+    </script>
 </itemlist>
